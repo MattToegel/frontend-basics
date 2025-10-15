@@ -1,0 +1,24 @@
+docs/index.html
+<p>This is css</p>
+<nav>
+            <ul>
+                <li>My Site (Option 2) <span>|</span></li>
+                <li>
+                    <a href="css">css</a>
+                    <span>|</span>
+                </li>
+                <li>
+                    <a href="html">html</a>
+                    <span>|</span>
+                </li>
+            </ul>
+        </nav>
+<script>
+    let target = document.getElementById("test");
+    fetch("/docs/nav.html").then(resp=>resp.text())
+    .then(resp=>{
+      //target.innerHTML = resp;
+      target.after(resp);
+      console.log(resp);
+    });
+</script>
