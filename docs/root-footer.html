@@ -17,8 +17,11 @@
         document.querySelectorAll('a, img, script, link').forEach(el => {
             const attr = el.tagName === 'A' ? 'href' : 'src';
             if (el[attr] && el[attr].startsWith('/') && !el[attr].startsWith('//')) {
-                const currentDir = window.location.pathname.replace(/\/[^/]*$/, '');
-                el[attr] = (document.baseURI || currentDir).replace(/\/$/, '') + el[attr];
+                const base = document.querySelector('base')?.href || window.location.origin;
+                const parts = window.location.pathname.split('/').filter(Boolean);
+                const repo = parts.length && !/\.[^/]+$/.test(parts[0]) ? parts[0] : '';
+                const adjustedBase = base.replace(/\/$/, '') + (repo ? `/${repo}` : '');
+                el[attr] = adjustedBase + el[attr];
             }
         });
     </script>
