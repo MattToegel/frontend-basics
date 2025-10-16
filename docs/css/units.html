@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Units</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Units</h1>
+            <p>CSS supports many units for sizes and measurements. They fall into two main categories: absolute and
+                relative. This page explains the common units, shows use-case examples, and demonstrates modern features
+                like container queries.</p>
+        </header>
+
+        <section>
+            <h2>Absolute units</h2>
+            <p>Absolute units are fixed and do not scale with the environment. They are useful for print or fixed-size
+                elements.</p>
+            <ul>
+                <li><code>px</code> — pixels (screen)</li>
+                <li><code>pt</code> — points (1/72in, print)</li>
+                <li><code>cm</code>, <code>mm</code>, <code>in</code> — physical lengths</li>
+                <li><code>pc</code> — picas</li>
+            </ul>
+            <pre><code class="language-css">.fixed-box { width: 200px; height: 120px; }</code></pre>
+            <div style="display:flex; gap:10px; margin-bottom:10px;">
+                <div
+                    style="width:200px; height:120px; background:lightblue; display:flex; align-items:center; justify-content:center;">
+                    200px</div>
+                <div
+                    style="width:100mm; height:50mm; background:lightcoral; display:flex; align-items:center; justify-content:center;">
+                    100mm</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Relative units</h2>
+            <p>Relative units scale based on context (viewport, font size, container), making them ideal for responsive
+                designs.</p>
+            <ul>
+                <li><code>em</code> — relative to the font-size of the element (useful for component scaling)</li>
+                <li><code>rem</code> — relative to the root element (<code>&lt;html&gt;</code>) font size (good for
+                    consistent sizing)</li>
+                <li><code>%</code> — relative to the parent element</li>
+                <li><code>vw</code>/<code>vh</code> — viewport width/height (1vw = 1% of viewport width)</li>
+                <li><code>vmin</code>/<code>vmax</code> — min/max of viewport dimensions</li>
+                <li><code>ch</code> — width of the '0' character in the current font (useful for inputs)
+                </li>
+                <li><code>ex</code> — x-height of the font (rarely used)</li>
+                <li><code>fr</code> — grid fractional unit (only usable in Grid layout)</li>
+            </ul>
+            <pre><code class="language-css">.relative-example { width: 50%; }
+.input { width: 30ch; }
+.title { font-size: clamp(1rem, 2.5vw + 0.5rem, 2rem); }</code></pre>
+
+            <div style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
+                <div style="font-size:16px;">
+                    Parent font-size 16px
+                    <div style="font-size:1em; background:#f0f8ff; padding:6px; margin-top:6px;">1em = parent (16px)
+                    </div>
+                    <div style="font-size:1rem; background:#fff0f0; padding:6px; margin-top:6px;">1rem = root (default
+                        16px)</div>
+                </div>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:center; margin-bottom:10px;">
+                <div style="width:50%; background:lightgreen; padding:10px;">50% of parent</div>
+                <div style="width:30ch; background:lightyellow; padding:10px;">30ch width (roughly 30 characters)</div>
+            </div>
+
+            <div
+                style="width:100%; height:80px; background:linear-gradient(90deg, lightblue, lightpink); display:flex; align-items:center; justify-content:center;">
+                100vw / 20vh demo: viewport-based sizing</div>
+
+            <div style="display:grid; grid-template-columns: 1fr 2fr; gap:10px; margin-top:10px;">
+                <div style="background:lavender; padding:10px;">1fr</div>
+                <div style="background:lavender; padding:10px;">2fr</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>CSS functions: clamp(), min(), max()</h2>
+            <p>These functions help create fluid, constrained values for typography and spacing.</p>
+            <pre><code class="language-css">h1 { font-size: clamp(1rem, 4vw, 2.5rem); }</code></pre>
+            <div style="font-size: clamp(1rem, 4vw, 2.5rem); background:#f7f7f7; padding:10px;">Fluid title using
+                clamp()</div>
+        </section>
+
+        <section>
+            <h2>Container queries</h2>
+            <p>Container queries let elements respond to the size of their container (not the viewport). Make a
+                container a query container with <code>container-type</code>.</p>
+            <pre><code class="language-css">.card { container-type: inline-size; }
+@container (min-width: 300px) {
+  .card .title { font-size: 1.2rem; }
+}</code></pre>
+
+            <div style="display:flex; gap:12px;">
+                <div class="card" style="width:260px; container-type:inline-size; border:1px solid #ddd; padding:10px;">
+                    <style>
+                        .card[style] {
+                            container-type: inline-size;
+                        }
+
+                        @container (min-width: 300px) {
+                            .card .title {
+                                font-size: 1.3rem;
+                                color: darkgreen;
+                            }
+
+                            .card .meta {
+                                display: block;
+                            }
+                        }
+
+                        @container (max-width: 299px) {
+                            .card .meta {
+                                display: none;
+                            }
+                        }
+                    </style>
+                    <div class="title">Narrow card</div>
+                    <div class="meta">Meta hidden under 300px</div>
+                </div>
+
+                <div class="card" style="width:360px; container-type:inline-size; border:1px solid #ddd; padding:10px;">
+                    <div class="title">Wide card</div>
+                    <div class="meta">Meta visible</div>
+                </div>
+            </div>
+
+            <p><strong>Browser support:</strong> Container queries are supported in modern browsers. For older browsers,
+                consider progressive enhancement or polyfills.</p>
+        </section>
+
+        <section>
+            <h2>Use-case scenarios</h2>
+            <ul>
+                <li>Use <code>rem</code> for global spacing and typography to respect user font-size settings.</li>
+                <li>Use <code>em</code> for component-level scaling (e.g., padding proportional to font size).</li>
+                <li>Use <code>ch</code> for input widths where character count matters.</li>
+                <li>Use <code>fr</code> in CSS Grid layouts for flexible column ratios.</li>
+                <li>Combine <code>clamp()</code> with <code>vw</code> for fluid typography that caps at sensible sizes.
+                </li>
+                <li>Use container queries to adapt components based on available container width instead of viewport.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Gotchas</h2>
+            <ul>
+                <li><strong>Mobile viewport units:</strong> <code>vh</code> and <code>vw</code> can be inconsistent on
+                    mobile due to browser chrome; consider <code>dvh</code>/<code>svh</code>/<code>lvh</code> or
+                    JavaScript when necessary.</li>
+                <li><strong>em vs rem:</strong> <code>em</code> is relative to the element's font-size; nesting can
+                    cause unexpected scaling. <code>rem</code> is safer for global sizing.</li>
+                <li><strong>Percent heights:</strong> Percentage heights require the parent to have an explicit height;
+                    otherwise they'll collapse.</li>
+                <li><strong>ch unit:</strong> Depends on the font and may vary widely between fonts.</li>
+                <li><strong>fr vs %:</strong> <code>fr</code> distributes remaining space; it is not the same as a
+                    percentage of the container's total width.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #333;
+    padding: 0.5em 1em;
+    transition: background 0.3s;
+}
+
+nav li a:hover {
+    background: #ddd;
+    border-radius: 4px;
+}
+
+nav {
+    background: #eee;
+    padding: .25em;
+}
+
+nav li {
+    display: inline;
+    margin-right: 1em;
+}
+
+main {
+    width: 80vw;
+    margin: auto;
+}

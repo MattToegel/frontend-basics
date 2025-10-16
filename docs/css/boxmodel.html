@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Box Model</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Box Model</h1>
+            <p>The CSS Box Model is a fundamental concept that describes how elements are structured and spaced in a web
+                page. It consists of four main parts: content, padding, border, and margin.</p>
+        </header>
+
+        <section>
+            <h2>Box Model Components</h2>
+            <ul>
+                <li><strong>Content:</strong> The area where text and images appear.</li>
+                <li><strong>Padding:</strong> Space between the content and the border. It is transparent and expands
+                    the element's size.</li>
+                <li><strong>Border:</strong> A line surrounding the padding (or content if no padding is set).</li>
+                <li><strong>Margin:</strong> Space outside the border, separating the element from others.</li>
+            </ul>
+            <pre><code class="language-css">.box {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+  margin: 10px;
+}</code></pre>
+            <div style="width: 200px; padding: 20px; border: 5px solid black; margin: 10px; background: lightblue;">
+                Content Area
+            </div>
+        </section>
+
+        <section>
+            <h2>Visualizing the Box Model</h2>
+            <p>The following example demonstrates how the box model components affect the total size of an element:</p>
+            <div style="display: flex; gap: 20px;">
+                <div
+                    style="width: 150px; padding: 10px; border: 5px solid black; margin: 10px; background: lightgreen;">
+                    <strong>Box 1</strong>
+                    <p>Content + Padding + Border + Margin</p>
+                </div>
+                <div
+                    style="width: 150px; padding: 20px; border: 10px solid black; margin: 20px; background: lightcoral;">
+                    <strong>Box 2</strong>
+                    <p>Increased Padding, Border, and Margin</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Box-Sizing Property</h2>
+            <p>The <code>box-sizing</code> property controls how the total width and height of an element are
+                calculated:</p>
+            <ul>
+                <li><code>content-box</code> (default): Width and height include only the content. Padding and border
+                    are added outside.</li>
+                <li><code>border-box</code>: Width and height include content, padding, and border.</li>
+            </ul>
+            <pre><code class="language-css">.box-content {
+  box-sizing: content-box;
+}
+
+.box-border {
+  box-sizing: border-box;
+}</code></pre>
+            <div style="display: flex; gap: 20px;">
+                <div
+                    style="width: 150px; padding: 20px; border: 5px solid black; box-sizing: content-box; background: lightyellow;">
+                    <strong>Content-Box</strong>
+                    <p>Total width = content + padding + border</p>
+                </div>
+                <div
+                    style="width: 150px; padding: 20px; border: 5px solid black; box-sizing: border-box; background: lightblue;">
+                    <strong>Border-Box</strong>
+                    <p>Total width = specified width</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Use Cases</h2>
+            <ul>
+                <li>Use <code>padding</code> to create space inside an element, such as between text and its border.
+                </li>
+                <li>Use <code>margin</code> to create space between elements, such as separating cards in a grid.</li>
+                <li>Use <code>box-sizing: border-box</code> for consistent sizing in responsive designs.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Gotchas</h2>
+            <ul>
+                <li><strong>Collapsing Margins:</strong> Adjacent vertical margins between elements may collapse into a
+                    single margin.</li>
+                <li><strong>Padding and Border:</strong> When using <code>content-box</code>, padding and border
+                    increase the total size of the element, which can break layouts if not accounted for.</li>
+                <li><strong>Inline Elements:</strong> Padding and border apply to inline elements but do not affect
+                    their flow in the document.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

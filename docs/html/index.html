@@ -1,14 +1,39 @@
-<p>This is html</p>
-<nav>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HTML Category Index</title>
+    <base href="/html/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="../nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>HTML Category</h1>
+            <p>Explore the basics of HTML through the following topics:</p>
+        </header>
+
+        <section>
+            <h2>Topics</h2>
             <ul>
-                <li>My Site (Option 2) <span>|</span></li>
-                <li>
-                    <a href="css">css</a>
-                    <span>|</span>
-                </li>
-                <li>
-                    <a href="html">html</a>
-                    <span>|</span>
-                </li>
+                <li><a href="basics.html">HTML Basics</a></li>
+                <li><a href="doctype.html">Understanding DOCTYPE</a></li>
+                <li><a href="forms.html">HTML Forms and Input Elements</a></li>
             </ul>
-        </nav>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html"></micro-include>
+    </footer>
+</body>
+
+</html>

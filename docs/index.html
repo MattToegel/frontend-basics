@@ -1,90 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Hello world index</title>
-    <style>
-        main p:first-child {
-            text-align: center;
-        }
-
-        nav {
-            text-align: center;
-            border-bottom: 1px solid blue;
-            background-color: brown;
-        }
-        nav ul{
-            background-color: bisque ;
-        }
-        ul li {
-            text-align: center;
-            display: inline;
-            border-radius: 5%;
-            border: 1px solid black;
-
-            background-color: aquamarine;
-            margin-left: 1em;
-            margin-right: 1em;
-        }
-        ul li span{
-            background-color: white;
-        }
-        ul li:last-child {
-            border-right: none;
-
-        }
-
-        a {
-            color: red;
-            text-decoration: none;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 1em;
-        }
-
-        a:hover {
-            color: blue;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Frontend Basics</title>
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
     <header>
-        <!-- header -->
-        <h1>My Site (Option 1)</h1>
-        <nav>
-            <ul>
-                <li>My Site (Option 2) <span>|</span></li>
-                <li>
-                    <a href="css">css</a>
-                    <span>|</span>
-                </li>
-                <li>
-                    <a href="html">html</a>
-                    <span>|</span>
-                </li>
-            </ul>
-        </nav>
-        <h1>My Site (Option 3)</h1>
+        <micro-include src="/nav.html"></micro-include>
     </header>
+
     <main>
-        <p>
-            This site is designed to help beginners learn the basics of front-end development. Explore topics like HTML,
-            CSS, and more through simple examples.
-        </p>
-        <p>This is awesome</p>
+        <header>
+            <h1>Welcome to Frontend Basics</h1>
+            <p>This site is a concise, practical guide to the fundamentals of frontend development, focusing on HTML and
+                CSS. Use the primary navigation above to explore topics and examples.</p>
+        </header>
 
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDQiIGZpbGw9InllbGxvdyIgLz4KICA8Y2lyY2xlIGN4PSIzNSIgY3k9IjQwIiByPSI1IiBmaWxsPSJibGFjayIgLz4KICA8Y2lyY2xlIGN4PSI2NSIgY3k9IjQwIiByPSI1IiBmaWxsPSJibGFjayIgLz4KICA8cGF0aCBkPSJNMzAgNjAgQzUwIDgwIDcwIDYwIDcwIDYwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIC8+Cjwvc3ZnPg=="
-            alt="Smiley Face" title="Smiley Face">
+        <section>
+            <h2>Goals & purpose</h2>
+            <p>This guide focuses on practical, example-led explanations to help you learn and apply core frontend
+                skills quickly. The goal is to teach fundamentals, modern patterns, and best practices that are useful
+                in real projects.</p>
 
+            <h3>Who this is for</h3>
+            <ul>
+                <li>Beginners learning HTML and CSS for the first time</li>
+                <li>Developers needing a focused refresher on layout and responsive design</li>
+                <li>Students and educators looking for clear examples to demonstrate concepts</li>
+            </ul>
 
-        <div>
-            <a href="css">css</a>
-            <a href="html">html</a>
-        </div>
+            <h3>How to use this site</h3>
+            <ul>
+                <li>Use the primary navigation above to jump to topic pages.</li>
+                <li>Read an article, try the example code, and experiment directly in your browser.</li>
+                <li>Look for interactive demos and usage notes that clarify common pitfalls.</li>
+            </ul>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; Matt Toegel</p>
+        <micro-include src="root-footer.html" allow-scripts></micro-include>
     </footer>
 </body>
 

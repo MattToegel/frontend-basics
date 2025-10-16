@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Grid</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Grid</h1>
+            <p>CSS Grid is a two-dimensional layout system for building complex, responsive layouts using rows and
+                columns. It complements Flexbox, which is better for one-dimensional layouts.</p>
+        </header>
+
+        <section>
+            <h2>Grid Basics</h2>
+            <p>Create a grid container with <code>display: grid</code> and define columns/rows using
+                <code>grid-template-columns</code> and <code>grid-template-rows</code>.
+            </p>
+            <pre><code class="language-css">.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}</code></pre>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-bottom:10px;">
+                <div style="background:lightblue; padding:10px;">1</div>
+                <div style="background:lightblue; padding:10px;">2</div>
+                <div style="background:lightblue; padding:10px;">3</div>
+                <div style="background:lightblue; padding:10px;">4</div>
+                <div style="background:lightblue; padding:10px;">5</div>
+                <div style="background:lightblue; padding:10px;">6</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Placement & Spanning</h2>
+            <p>Place items using <code>grid-column</code> and <code>grid-row</code>, or span multiple tracks using the
+                <code>span</code> keyword.
+            </p>
+            <pre><code class="language-css">.item-wide { grid-column: span 2; }
+.item-tall { grid-row: span 2; }</code></pre>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+                <div style="background:lightcoral; padding:10px; grid-column: span 2;">Span 2 columns</div>
+                <div style="background:lightcoral; padding:10px;">Item</div>
+                <div style="background:lightcoral; padding:10px; grid-row: span 2;">Span 2 rows</div>
+                <div style="background:lightcoral; padding:10px;">Item</div>
+                <div style="background:lightcoral; padding:10px;">Item</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Named Areas</h2>
+            <p>Use <code>grid-template-areas</code> to map grid cells to names and assign items using
+                <code>grid-area</code>.
+            </p>
+            <pre><code class="language-css">.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "sidebar main"
+    "sidebar footer";
+}
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }</code></pre>
+            <div
+                style="display:grid; grid-template-columns:200px 1fr; grid-template-areas:'sidebar main' 'sidebar footer'; gap:10px;">
+                <div style="grid-area:sidebar; background:lightgreen; padding:10px;">Sidebar</div>
+                <div style="grid-area:main; background:lightgreen; padding:10px;">Main</div>
+                <div style="grid-area:footer; background:lightgreen; padding:10px;">Footer</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Responsive Patterns</h2>
+            <p>Use <code>repeat()</code>, <code>minmax()</code>, and <code>auto-fill/auto-fit</code> for responsive
+                grids.</p>
+            <pre><code class="language-css">.responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}</code></pre>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px;">
+                <div style="background:lightgoldenrodyellow; padding:10px;">A</div>
+                <div style="background:lightgoldenrodyellow; padding:10px;">B</div>
+                <div style="background:lightgoldenrodyellow; padding:10px;">C</div>
+                <div style="background:lightgoldenrodyellow; padding:10px;">D</div>
+                <div style="background:lightgoldenrodyellow; padding:10px;">E</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Implicit vs Explicit Grids</h2>
+            <p>Explicit grid tracks are those you define with <code>grid-template-*</code>. Implicit tracks are created
+                automatically when items exceed the explicit grid; control them with <code>grid-auto-rows</code> and
+                <code>grid-auto-columns</code>.
+            </p>
+            <pre><code class="language-css">.auto { display:grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 80px; }</code></pre>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 80px; gap:10px;">
+                <div style="background:lightsteelblue; padding:10px;">1</div>
+                <div style="background:lightsteelblue; padding:10px;">2</div>
+                <div style="background:lightsteelblue; padding:10px;">3 (implicit row)</div>
+                <div style="background:lightsteelblue; padding:10px;">4</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Alignment</h2>
+            <p>Control alignment of items and the grid itself using:</p>
+            <ul>
+                <li><code>justify-items</code> / <code>align-items</code> (alignment inside cells)</li>
+                <li><code>justify-content</code> / <code>align-content</code> (alignment of the whole grid within its
+                    container)</li>
+            </ul>
+            <pre><code class="language-css">.align { display:grid; grid-template-columns: repeat(3, 1fr); justify-items:center; align-items:center; height:120px; }</code></pre>
+            <div
+                style="display:grid; grid-template-columns: repeat(3, 1fr); justify-items:center; align-items:center; height:120px; gap:10px; background:#f2f2f2;">
+                <div style="background:lightseagreen; padding:10px;">Centered</div>
+                <div style="background:lightseagreen; padding:10px;">Centered</div>
+                <div style="background:lightseagreen; padding:10px;">Centered</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Grid Templates</h2>
+            <p>The <code>grid-template-columns</code> and <code>grid-template-rows</code> properties define the
+                structure of the grid. You can specify sizes for each column or row using various units.</p>
+            <pre><code class="language-css">.grid {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  grid-template-rows: 50px 2fr;
+}</code></pre>
+            <p>Example:</p>
+            <div style="display:grid; grid-template-columns: 100px 1fr auto; grid-template-rows: 50px 2fr; gap:10px;">
+                <div style="background:lightblue; padding:10px;">100px</div>
+                <div style="background:lightblue; padding:10px;">1fr</div>
+                <div style="background:lightblue; padding:10px;">auto</div>
+                <div style="background:lightblue; padding:10px;">50px</div>
+                <div style="background:lightblue; padding:10px;">2fr</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Units for Grid Templates</h2>
+            <p>Grid templates support various units to define track sizes:</p>
+            <ul>
+                <li><strong>Pixels (<code>px</code>):</strong> Fixed size (e.g., <code>100px</code>).</li>
+                <li><strong>Percentage (<code>%</code>):</strong> Relative to the grid container (e.g.,
+                    <code>50%</code>).
+                </li>
+                <li><strong>Fractional Unit (<code>fr</code>):</strong> Distributes available space (e.g.,
+                    <code>1fr</code>, <code>2fr</code>).
+                </li>
+                <li><strong>Auto:</strong> Automatically adjusts to the content size.</li>
+                <li><strong>Minmax:</strong> Sets a minimum and maximum size (e.g., <code>minmax(100px, 1fr)</code>).
+                </li>
+            </ul>
+            <pre><code class="language-css">.grid {
+  display: grid;
+  grid-template-columns: 100px 50% 1fr auto minmax(100px, 200px);
+}</code></pre>
+            <p>Example:</p>
+            <div style="display:grid; grid-template-columns: 100px 50% 1fr auto minmax(100px, 200px); gap:10px;">
+                <div style="background:lightcoral; padding:10px;">100px</div>
+                <div style="background:lightcoral; padding:10px;">50%</div>
+                <div style="background:lightcoral; padding:10px;">1fr</div>
+                <div style="background:lightcoral; padding:10px;">auto</div>
+                <div style="background:lightcoral; padding:10px;">minmax</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Useful Functions & Units</h2>
+            <ul>
+                <li><code>fr</code>: Fractional unit for distributing available space.</li>
+                <li><code>minmax(min, max)</code>: Constrains track sizes.</li>
+                <li><code>repeat()</code>: Repeats column/row patterns.</li>
+                <li><code>auto-fit</code> / <code>auto-fill</code>: Useful with <code>minmax()</code> for responsive
+                    grids.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Use Grid for two-dimensional layouts (rows and columns).</li>
+                <li>Combine Grid and Flexbox: Grid for layout, Flexbox for internal alignment.</li>
+                <li>Prefer <code>fr</code> and <code>minmax()</code> for responsive sizing.</li>
+                <li>Use named areas for readable template layouts but avoid over-complication for small grids.</li>
+                <li>Test across browsers and use devtools grid inspector to debug layouts.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Display</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Display</h1>
+            <p>The <code>display</code> property in CSS determines how an element is displayed in the document. This
+                page covers the most common display values, their definitions, and usage examples.</p>
+        </header>
+
+        <section>
+            <h2>Common Display Values</h2>
+            <ul>
+                <li><strong><code>block</code>:</strong> The element takes up the full width available and starts on a
+                    new line.</li>
+                <li><strong><code>inline</code>:</strong> The element takes up only as much width as necessary and does
+                    not start on a new line.</li>
+                <li><strong><code>inline-block</code>:</strong> Like <code>inline</code>, but allows setting width and
+                    height.</li>
+                <li><strong><code>flex</code>:</strong> Enables a flex container for flexible layouts.</li>
+                <li><strong><code>grid</code>:</strong> Enables a grid container for grid-based layouts.</li>
+                <li><strong><code>none</code>:</strong> The element is not displayed and does not take up space.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Visual Examples</h2>
+            <h3>Block</h3>
+            <p>Block elements take up the full width available and start on a new line.</p>
+            <div style="display: block; background-color: lightblue; padding: 10px;">This is a block element.</div>
+
+            <h3>Inline</h3>
+            <p>Inline elements take up only as much width as necessary and do not start on a new line.</p>
+            <span style="display: inline; background-color: lightgreen; padding: 5px;">This is an inline element.</span>
+            <span style="display: inline; background-color: lightgreen; padding: 5px;">This is another inline
+                element.</span>
+
+            <h3>Inline-Block</h3>
+            <p>Inline-block elements behave like inline elements but allow setting width and height.</p>
+            <div style="display: inline-block; background-color: lightcoral; width: 100px; height: 50px;">Inline-Block
+            </div>
+            <div style="display: inline-block; background-color: lightcoral; width: 100px; height: 50px;">Inline-Block
+            </div>
+
+            <h3>Flex</h3>
+            <p>Flex elements enable flexible layouts.</p>
+            <div style="display: flex; gap: 10px; background-color: lightyellow; padding: 10px;">
+                <div style="background-color: lightblue; padding: 10px;">Flex Item 1</div>
+                <div style="background-color: lightblue; padding: 10px;">Flex Item 2</div>
+                <div style="background-color: lightblue; padding: 10px;">Flex Item 3</div>
+            </div>
+
+            <h3>Grid</h3>
+            <p>Grid elements enable grid-based layouts.</p>
+            <div
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background-color: lightgray; padding: 10px;">
+                <div style="background-color: lightblue; padding: 10px;">Grid Item 1</div>
+                <div style="background-color: lightblue; padding: 10px;">Grid Item 2</div>
+                <div style="background-color: lightblue; padding: 10px;">Grid Item 3</div>
+            </div>
+
+            <h3>None</h3>
+            <p>Elements with <code>display: none</code> are not displayed and do not take up space.</p>
+            <div style="display: none; background-color: lightpink; padding: 10px;">This element is hidden.</div>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Use <code>block</code> for structural elements like <code>&lt;div&gt;</code> and
+                    <code>&lt;section&gt;</code>.
+                </li>
+                <li>Use <code>inline</code> for text-level elements like <code>&lt;span&gt;</code> and
+                    <code>&lt;a&gt;</code>.
+                </li>
+                <li>Use <code>flex</code> and <code>grid</code> for modern, responsive layouts.</li>
+                <li>Avoid using <code>display: none</code> for accessibility-critical content.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

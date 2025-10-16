@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Flexbox</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Flexbox</h1>
+            <p>Flexbox is a CSS layout model that provides an efficient way to align and distribute space among items in
+                a container, even when their sizes are dynamic. This page covers the key concepts and properties of
+                Flexbox with visual examples.</p>
+        </header>
+
+        <section>
+            <h2>Flex Container Properties</h2>
+            <p>The following properties are applied to the flex container:</p>
+            <ul>
+                <li><strong><code>display: flex</code>:</strong> Defines a flex container.</li>
+                <li><strong><code>flex-direction</code>:</strong> Specifies the direction of the main axis
+                    (<code>row</code>, <code>row-reverse</code>, <code>column</code>, <code>column-reverse</code>).</li>
+                <li><strong><code>justify-content</code>:</strong> Aligns items along the main axis
+                    (<code>flex-start</code>, <code>center</code>, <code>space-between</code>,
+                    <code>space-around</code>, <code>space-evenly</code>).
+                </li>
+                <li><strong><code>align-items</code>:</strong> Aligns items along the cross axis
+                    (<code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>stretch</code>,
+                    <code>baseline</code>).
+                </li>
+                <li><strong><code>align-content</code>:</strong> Aligns a flex container's lines when there are multiple
+                    lines (<code>flex-start</code>, <code>center</code>, <code>space-between</code>,
+                    <code>space-around</code>, <code>stretch</code>).
+                </li>
+            </ul>
+            <div style="display: flex; gap: 10px; background-color: lightgray; padding: 10px;">
+                <div style="background-color: lightblue; padding: 10px;">Item 1</div>
+                <div style="background-color: lightblue; padding: 10px;">Item 2</div>
+                <div style="background-color: lightblue; padding: 10px;">Item 3</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Flex Item Properties</h2>
+            <p>The following properties are applied to flex items:</p>
+            <ul>
+                <li><strong><code>flex-grow</code>:</strong> Specifies how much a flex item will grow relative to the
+                    rest.</li>
+                <li><strong><code>flex-shrink</code>:</strong> Specifies how much a flex item will shrink relative to
+                    the rest.</li>
+                <li><strong><code>flex-basis</code>:</strong> Specifies the initial size of a flex item before space
+                    distribution.</li>
+                <li><strong><code>align-self</code>:</strong> Overrides the <code>align-items</code> property for a
+                    specific item (<code>auto</code>, <code>flex-start</code>, <code>center</code>,
+                    <code>flex-end</code>, <code>stretch</code>).
+                </li>
+            </ul>
+            <div style="display: flex; gap: 10px; background-color: lightyellow; padding: 10px;">
+                <div style="flex-grow: 1; background-color: lightblue; padding: 10px;">Grow 1</div>
+                <div style="flex-grow: 2; background-color: lightblue; padding: 10px;">Grow 2</div>
+                <div style="flex-grow: 1; background-color: lightblue; padding: 10px;">Grow 1</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Visual Examples</h2>
+            <h3>Flex Direction</h3>
+            <div style="display: flex; flex-direction: row; gap: 10px; background-color: lightgray; padding: 10px;">
+                <div style="background-color: lightblue; padding: 10px;">Row 1</div>
+                <div style="background-color: lightblue; padding: 10px;">Row 2</div>
+                <div style="background-color: lightblue; padding: 10px;">Row 3</div>
+            </div>
+            <div
+                style="display: flex; flex-direction: column; gap: 10px; background-color: lightgray; padding: 10px; margin-top: 10px;">
+                <div style="background-color: lightblue; padding: 10px;">Column 1</div>
+                <div style="background-color: lightblue; padding: 10px;">Column 2</div>
+                <div style="background-color: lightblue; padding: 10px;">Column 3</div>
+            </div>
+
+            <h3>Justify Content</h3>
+            <div style="display: flex; justify-content: space-between; background-color: lightgray; padding: 10px;">
+                <div style="background-color: lightblue; padding: 10px;">Start</div>
+                <div style="background-color: lightblue; padding: 10px;">Middle</div>
+                <div style="background-color: lightblue; padding: 10px;">End</div>
+            </div>
+
+            <h3>Align Items</h3>
+            <div style="display: flex; align-items: center; height: 100px; background-color: lightgray; padding: 10px;">
+                <div style="background-color: lightblue; padding: 10px;">Center</div>
+                <div style="background-color: lightblue; padding: 10px;">Center</div>
+                <div style="background-color: lightblue; padding: 10px;">Center</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Use Flexbox for one-dimensional layouts (either row or column).</li>
+                <li>Combine Flexbox with Grid for complex layouts.</li>
+                <li>Test your layout on different screen sizes to ensure responsiveness.</li>
+                <li>Use <code>gap</code> for spacing between flex items instead of margins for cleaner layouts.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Shorthand & common patterns</h2>
+            <p>The <code>flex</code> shorthand combines <code>flex-grow</code>, <code>flex-shrink</code>, and
+                <code>flex-basis</code>. A common pattern is <code>flex: 1</code> which allows items to grow equally.
+            </p>
+            <pre><code class="language-css">/* Examples */
+.container { display: flex; }
+.container .item { flex: 1; } /* shorthand for equal growth */
+.container .item-wide { flex: 2; } /* twice the width */
+.container .item-fixed { flex: 0 0 100px; } /* fixed width */</code></pre>
+            <div style="display:flex; gap:10px; background:#f0f4f8; padding:10px;">
+                <div style="flex:1; background:lightblue; padding:10px;">flex:1</div>
+                <div style="flex:2; background:lightblue; padding:10px;">flex:2</div>
+                <div style="flex:0 0 100px; background:lightblue; padding:10px;">100px</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Wrapping & multi-line containers</h2>
+            <p>Use <code>flex-wrap: wrap</code> to allow items to wrap to the next line. When wrapping,
+                <code>align-content</code> controls the cross-axis alignment of the rows.
+            </p>
+            <pre><code class="language-css">.wrap { display:flex; flex-wrap:wrap; width:300px; }</code></pre>
+            <div style="display:flex; flex-wrap:wrap; width:300px; gap:8px; background:#f7f7f7; padding:8px;">
+                <div style="width:140px; background:lightcoral; padding:8px;">140px</div>
+                <div style="width:140px; background:lightcoral; padding:8px;">140px</div>
+                <div style="width:140px; background:lightcoral; padding:8px;">140px</div>
+                <div style="width:140px; background:lightcoral; padding:8px;">140px</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Order & per-item alignment</h2>
+            <p>The <code>order</code> property changes the visual order of items without changing the DOM. Use
+                <code>align-self</code> to override an item's alignment.
+            </p>
+            <pre><code class="language-css">.item-a { order: -1; } /* appear first */
+.item-b { align-self: flex-end; } /* override container align-items */</code></pre>
+            <div style="display:flex; gap:10px; background:#eef; padding:10px;">
+                <div style="order:1; background:lightseagreen; padding:10px;">Order 1</div>
+                <div style="order:-1; background:lightseagreen; padding:10px;">Order -1 (first)</div>
+                <div style="order:2; align-self:flex-end; background:lightseagreen; padding:10px; height:40px;">Order 2,
+                    align-self flex-end</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Centering and gap</h2>
+            <p>Centering both axes is simple with flexbox: use <code>justify-content</code> and
+                <code>align-items</code>. Use <code>gap</code> for spacing between items.
+            </p>
+            <pre><code class="language-css">.center { display:flex; justify-content:center; align-items:center; gap:10px; height:150px; }</code></pre>
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:10px; height:150px; background:#f0f0f0;">
+                <div style="background:lightgreen; padding:10px;">Centered</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Flex-basis & equal distribution gotcha</h2>
+            <p>To distribute space equally regardless of intrinsic content size, use <code>flex-basis: 0</code> in
+                combination with <code>flex-grow</code> (e.g., <code>flex: 1 1 0</code>).</p>
+            <pre><code class="language-css">/* Ensures equal widths */
+.equal > div { flex: 1 1 0; }</code></pre>
+            <div style="display:flex; background:#fff7e6; gap:10px; padding:8px;">
+                <div style="flex:1 1 0; background:lightblue; padding:8px;">Short</div>
+                <div style="flex:1 1 0; background:lightblue; padding:8px;">A longer content example</div>
+                <div style="flex:1 1 0; background:lightblue; padding:8px;">S</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Notes & tips</h2>
+            <ul>
+                <li>Flexbox is ideal for one-dimensional layouts; use Grid for two-dimensional layouts.</li>
+                <li>Use <code>gap</code> instead of margins for cleaner spacing between flex items.</li>
+                <li>Remember <code>align-content</code> affects multi-line containers; <code>align-items</code> affects
+                    single-line alignment.</li>
+                <li>Test flex layouts on narrow screens and older browsers if you need broad compatibility.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

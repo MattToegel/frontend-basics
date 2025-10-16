@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Forms and Input</title>
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+    <base href="/html/">
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>HTML Forms and Input Elements</h1>
+            <p>Forms are a key part of web development, allowing users to input and submit data. This page covers the
+                basics of form elements and input types, with examples and best practices.</p>
+        </header>
+
+        <section>
+            <h2>Basic Form Structure</h2>
+            <p>A form is defined using the <code>&lt;form&gt;</code> element. It typically includes input fields,
+                labels, and a submit button.</p>
+            <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input id="name" name="name" type="text" required&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Input Types</h2>
+            <p>HTML provides various input types for different kinds of data. Here are all the input types and their
+                purposes:</p>
+            <ul>
+                <li><code>text</code>: For single-line text input.</li>
+                <li><code>email</code>: For email addresses, with built-in validation.</li>
+                <li><code>password</code>: For password input, hides the text.</li>
+                <li><code>number</code>: For numeric input, with optional min and max values.</li>
+                <li><code>date</code>: For selecting a date.</li>
+                <li><code>datetime-local</code>: For selecting a date and time (local).</li>
+                <li><code>month</code>: For selecting a month and year.</li>
+                <li><code>week</code>: For selecting a week of the year.</li>
+                <li><code>time</code>: For selecting a time.</li>
+                <li><code>url</code>: For entering a URL, with built-in validation.</li>
+                <li><code>tel</code>: For entering a telephone number.</li>
+                <li><code>color</code>: For selecting a color.</li>
+                <li><code>checkbox</code>: For selecting multiple options.</li>
+                <li><code>radio</code>: For selecting one option from a group.</li>
+                <li><code>file</code>: For uploading files.</li>
+                <li><code>hidden</code>: For including hidden data in forms.</li>
+                <li><code>range</code>: For selecting a value within a range using a slider.</li>
+                <li><code>search</code>: For search fields, styled for search input.</li>
+                <li><code>submit</code>: For submitting the form.</li>
+                <li><code>reset</code>: For resetting the form fields to their initial values.</li>
+                <li><code>button</code>: For a generic button that can trigger JavaScript actions.</li>
+            </ul>
+            <pre><code>&lt;form&gt;
+  &lt;label for="url"&gt;Website:&lt;/label&gt;
+  &lt;input id="url" name="url" type="url" placeholder="https://example.com"&gt;
+
+  &lt;label for="tel"&gt;Phone:&lt;/label&gt;
+  &lt;input id="tel" name="tel" type="tel" placeholder="123-456-7890"&gt;
+
+  &lt;label for="color"&gt;Favorite Color:&lt;/label&gt;
+  &lt;input id="color" name="color" type="color"&gt;
+
+  &lt;label for="range"&gt;Volume:&lt;/label&gt;
+  &lt;input id="range" name="range" type="range" min="0" max="100"&gt;
+
+  &lt;label for="datetime"&gt;Appointment:&lt;/label&gt;
+  &lt;input id="datetime" name="datetime" type="datetime-local"&gt;
+
+  &lt;label for="month"&gt;Birth Month:&lt;/label&gt;
+  &lt;input id="month" name="month" type="month"&gt;
+
+  &lt;label for="week"&gt;Preferred Week:&lt;/label&gt;
+  &lt;input id="week" name="week" type="week"&gt;
+
+  &lt;label for="time"&gt;Preferred Time:&lt;/label&gt;
+  &lt;input id="time" name="time" type="time"&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Textarea and Select</h2>
+            <p>For multi-line text input, use <code>&lt;textarea&gt;</code>. For dropdown menus, use
+                <code>&lt;select&gt;</code>.
+            </p>
+            <pre><code>&lt;form&gt;
+  &lt;label for="message"&gt;Message:&lt;/label&gt;
+  &lt;textarea id="message" name="message" rows="4" cols="50"&gt;&lt;/textarea&gt;
+
+  &lt;label for="country"&gt;Country:&lt;/label&gt;
+  &lt;select id="country" name="country"&gt;
+    &lt;option value="us"&gt;United States&lt;/option&gt;
+    &lt;option value="ca"&gt;Canada&lt;/option&gt;
+    &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Always use <code>&lt;label&gt;</code> elements for accessibility.</li>
+                <li>Use the <code>required</code> attribute for mandatory fields.</li>
+                <li>Validate input on both the client and server sides.</li>
+                <li>Use appropriate input types to improve user experience.</li>
+                <li>Group related inputs with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Common Attributes</h2>
+            <p>Input elements support a variety of attributes to enhance functionality and user experience:</p>
+            <ul>
+                <li><code>id</code>: Unique identifier for the input, used with <code>&lt;label&gt;</code>.</li>
+                <li><code>name</code>: Name of the input, used to identify the data when the form is submitted.</li>
+                <li><code>placeholder</code>: Text displayed inside the input as a hint.</li>
+                <li><code>value</code>: Pre-filled value for the input.</li>
+                <li><code>required</code>: Makes the input mandatory.</li>
+                <li><code>readonly</code>: Prevents the user from modifying the input value.</li>
+                <li><code>disabled</code>: Disables the input, making it uneditable and unsubmitted.</li>
+                <li><code>min</code> and <code>max</code>: Define the range of acceptable values (e.g., for
+                    <code>number</code>, <code>date</code>, <code>range</code>).
+                </li>
+                <li><code>step</code>: Specifies the increment for numeric inputs (e.g., <code>step="0.1"</code> for
+                    decimals).</li>
+                <li><code>pattern</code>: Regular expression for custom validation.</li>
+                <li><code>autofocus</code>: Automatically focuses the input when the page loads.</li>
+                <li><code>multiple</code>: Allows multiple values (e.g., for <code>file</code> or <code>email</code>
+                    inputs).</li>
+                <li><code>autocomplete</code>: Enables or disables browser autocomplete for the input.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

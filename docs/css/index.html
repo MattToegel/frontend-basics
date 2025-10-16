@@ -1,24 +1,45 @@
-docs/index.html
-<p>This is css</p>
-<nav>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Category Index</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="../nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Category</h1>
+            <p>Explore the fundamentals of CSS through the following topics:</p>
+        </header>
+
+        <section>
+            <h2>Topics</h2>
             <ul>
-                <li>My Site (Option 2) <span>|</span></li>
-                <li>
-                    <a href="css">css</a>
-                    <span>|</span>
-                </li>
-                <li>
-                    <a href="html">html</a>
-                    <span>|</span>
-                </li>
+                <li><a href="basics.html">CSS Basics</a></li>
+                <li><a href="selectors.html">CSS Selectors</a></li>
+                <li><a href="position.html">CSS Position</a></li>
+                <li><a href="display.html">CSS Display</a></li>
+                <li><a href="units.html">CSS Units</a></li>
+                <li><a href="colors.html">CSS Colors</a></li>
+                <li><a href="flexbox.html">CSS Flexbox</a></li>
+                <li><a href="grid.html">CSS Grid</a></li>
+                <li><a href="boxmodel.html">CSS Box Model</a></li>
             </ul>
-        </nav>
-<script>
-    let target = document.getElementById("test");
-    fetch("/docs/nav.html").then(resp=>resp.text())
-    .then(resp=>{
-      //target.innerHTML = resp;
-      target.after(resp);
-      console.log(resp);
-    });
-</script>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html"></micro-include>
+    </footer>
+</body>
+
+</html>

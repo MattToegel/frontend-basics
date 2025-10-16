@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Selectors</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Selectors</h1>
+            <p>CSS selectors are patterns used to select and style specific elements in an HTML document. This page
+                covers the most common types of selectors with examples and explanations.</p>
+        </header>
+
+        <section>
+            <h2>Basic Selectors</h2>
+            <ul>
+                <li><strong>Universal Selector (<code>*</code>):</strong> Selects all elements.</li>
+                <li><strong>Type Selector:</strong> Selects all elements of a specific type (e.g., <code>p</code>,
+                    <code>h1</code>).
+                </li>
+                <li><strong>Class Selector (<code>.classname</code>):</strong> Selects all elements with a specific
+                    class.</li>
+                <li><strong>ID Selector (<code>#id</code>):</strong> Selects a single element with a specific ID.</li>
+                <li><strong>Group Selector (<code>selector1, selector2</code>):</strong> Selects multiple elements.</li>
+            </ul>
+            <pre><code class="language-css">/* Examples */
+* {
+  margin: 0;
+}
+
+p {
+  color: blue;
+}
+
+.button {
+  background-color: green;
+}
+
+#header {
+  font-size: 24px;
+}
+
+h1, h2 {
+  font-family: Arial, sans-serif;
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Combinator Selectors</h2>
+            <ul>
+                <li><strong>Descendant Selector (<code>ancestor descendant</code>):</strong> Selects all descendants of
+                    an element.</li>
+                <li><strong>Child Selector (<code>parent > child</code>):</strong> Selects direct children of an
+                    element.</li>
+                <li><strong>Adjacent Sibling Selector (<code>element1 + element2</code>):</strong> Selects the next
+                    sibling of an element.</li>
+                <li><strong>General Sibling Selector (<code>element1 ~ element2</code>):</strong> Selects all siblings
+                    of an element.</li>
+            </ul>
+            <pre><code class="language-css">/* Examples */
+div p {
+  color: red; /* All &lt;p&gt; inside &lt;div&gt; */
+}
+
+div > p {
+  font-weight: bold; /* Direct children &lt;p&gt; of &lt;div&gt; */
+}
+
+h1 + p {
+  margin-top: 10px; /* First &lt;p&gt; after &lt;h1&gt; */
+}
+
+h1 ~ p {
+  color: gray; /* All &lt;p&gt; after &lt;h1&gt; */
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Pseudo-classes</h2>
+            <p>Pseudo-classes define the special state of an element.</p>
+            <ul>
+                <li><strong><code>:hover</code>:</strong> Applies when the user hovers over an element.</li>
+                <li><strong><code>:nth-child(n)</code>:</strong> Selects the nth child of a parent.</li>
+                <li><strong><code>:first-child</code>:</strong> Selects the first child of a parent.</li>
+                <li><strong><code>:last-child</code>:</strong> Selects the last child of a parent.</li>
+                <li><strong><code>:not(selector)</code>:</strong> Excludes elements matching the selector.</li>
+            </ul>
+            <pre><code class="language-css">/* Examples */
+a:hover {
+  text-decoration: underline;
+}
+
+li:nth-child(2) {
+  color: orange; /* Second &lt;li&gt; */
+}
+
+p:first-child {
+  font-style: italic; /* First &lt;p&gt; in a parent */
+}
+
+p:not(.highlight) {
+  color: black; /* All &lt;p&gt; except those with class "highlight" */
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Pseudo-elements</h2>
+            <p>Pseudo-elements style specific parts of an element.</p>
+            <ul>
+                <li><strong><code>::before</code>:</strong> Inserts content before an element.</li>
+                <li><strong><code>::after</code>:</strong> Inserts content after an element.</li>
+                <li><strong><code>::first-line</code>:</strong> Styles the first line of text in an element.</li>
+                <li><strong><code>::first-letter</code>:</strong> Styles the first letter of text in an element.</li>
+            </ul>
+            <pre><code class="language-css">/* Examples */
+p::before {
+  content: "Note: ";
+  font-weight: bold;
+}
+
+p::after {
+  content: " [Read more]";
+  color: blue;
+}
+
+p::first-line {
+  font-size: 1.2em;
+}
+
+p::first-letter {
+  font-size: 2em;
+  color: red;
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Interactive Demos</h2>
+            <p>See the selectors applied to live examples. The styles are scoped to each demo container so they won't
+                affect the rest of the page.</p>
+
+            <h3>Basic selectors (type, class, id)</h3>
+            <div class="demo basic-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
+                <style>
+                    .basic-demo p {
+                        color: blue;
+                    }
+
+                    .basic-demo .button {
+                        background-color: green;
+                        color: white;
+                        padding: 6px 10px;
+                        text-decoration: none;
+                        border-radius: 3px;
+                    }
+
+                    .basic-demo #example-header {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                </style>
+                <div id="example-header">Header (ID selector)</div>
+                <p>This paragraph is styled by the type selector inside the demo container.</p>
+                <a class="button" href="#">Button (class selector)</a>
+            </div>
+            <pre><code class="language-css">.basic-demo p { color: blue; }
+.basic-demo .button { background-color: green; color: white; }
+.basic-demo #example-header { font-size: 18px; font-weight: bold; }</code></pre>
+
+            <h3>Combinator selectors</h3>
+            <div class="demo combinator-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
+                <style>
+                    .combinator-demo div p {
+                        color: red;
+                    }
+
+                    .combinator-demo>p {
+                        font-weight: bold;
+                    }
+
+                    .combinator-demo h1+p {
+                        background: yellow;
+                    }
+
+                    .combinator-demo h1~p {
+                        color: gray;
+                    }
+                </style>
+                <h1>Heading</h1>
+                <p>Adjacent sibling (h1 + p) - should be bold and yellow</p>
+                <p>General sibling (h1 ~ p) - should be gray</p>
+                <div>
+                    <p>Descendant inside div - should be red</p>
+                </div>
+            </div>
+            <pre><code class="language-css">.combinator-demo div p { color: red; }
+.combinator-demo > p { font-weight: bold; }
+.combinator-demo h1 + p { background: yellow; }
+.combinator-demo h1 ~ p { color: gray; }</code></pre>
+
+            <h3>Pseudo-classes</h3>
+            <div class="demo pseudo-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
+                <style>
+                    .pseudo-demo a:hover {
+                        color: red;
+                        text-decoration: underline;
+                    }
+
+                    .pseudo-demo ul li:nth-child(2) {
+                        color: orange;
+                    }
+                </style>
+                <a href="#">Hover over me (hover)</a>
+                <ul>
+                    <li>First</li>
+                    <li>Second (nth-child)</li>
+                    <li>Third</li>
+                </ul>
+            </div>
+            <pre><code class="language-css">.pseudo-demo a:hover { color: red; }
+.pseudo-demo ul li:nth-child(2) { color: orange; }</code></pre>
+
+            <h3>First-child & not()</h3>
+            <div class="demo pfirst-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
+                <style>
+                    .pfirst-demo p:first-child {
+                        font-style: italic;
+                    }
+
+                    .pfirst-demo p:not(.highlight) {
+                        color: black;
+                    }
+                </style>
+                <p>First child paragraph (italic)</p>
+                <p class="highlight">Highlighted paragraph (not selected by <code>:not(.highlight)</code>)</p>
+                <p>Normal paragraph (matched by <code>:not(.highlight)</code>)</p>
+            </div>
+            <pre><code class="language-css">.pfirst-demo p:first-child { font-style: italic; }
+.pfirst-demo p:not(.highlight) { color: black; }</code></pre>
+
+            <h3>Pseudo-elements</h3>
+            <div class="demo pseudo-element-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
+                <style>
+                    .pseudo-element-demo p::before {
+                        content: "Note: ";
+                        font-weight: bold;
+                    }
+
+                    .pseudo-element-demo p::after {
+                        content: " [Read more]";
+                        color: blue;
+                    }
+
+                    .pseudo-element-demo p::first-letter {
+                        font-size: 1.5em;
+                        color: red;
+                    }
+                </style>
+                <p>This paragraph demonstrates <code>::before</code>, <code>::after</code>, and
+                    <code>::first-letter</code>.
+                </p>
+            </div>
+            <pre><code class="language-css">.pseudo-element-demo p::before { content: "Note: "; font-weight: bold; }
+.pseudo-element-demo p::after { content: " [Read more]"; color: blue; }
+.pseudo-element-demo p::first-letter { font-size: 1.5em; color: red; }</code></pre>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Use class selectors for reusable styles.</li>
+                <li>Minimize the use of ID selectors to avoid specificity issues.</li>
+                <li>Organize your CSS with comments and logical groupings.</li>
+                <li>Test your selectors to ensure they target the intended elements.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

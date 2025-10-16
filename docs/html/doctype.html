@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DOCTYPE</title>
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+    <base href="/html/">
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+    <main>
+        <header>
+            <h1>What is &lt;!DOCTYPE&gt;?</h1>
+            <p>
+                The DOCTYPE is a short instruction at the very top of an HTML file that tells the browser which version
+                of HTML to expect.
+                It helps the browser render the page correctly and avoid "quirks mode."
+            </p>
+        </header>
+
+        <section>
+            <h2>Why it matters</h2>
+            <ul>
+                <li>Ensures consistent rendering across browsers.</li>
+                <li>Prevents browsers from switching to legacy "quirks mode".</li>
+                <li>Makes your page compatible with modern HTML features and validators.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>HTML5 DOCTYPE (recommended)</h2>
+            <p>
+                HTML5 uses a simple, short DOCTYPE. Place it as the very first line in your file:
+            </p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;My page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- content --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Older doctypes</h2>
+            <p>
+                Older HTML versions (HTML4, XHTML) used longer DOCTYPE declarations. You generally only need them if
+                you're maintaining legacy sites.
+            </p>
+            <pre><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Common mistakes</h2>
+            <ul>
+                <li>Putting the DOCTYPE after comments or whitespace — it must be the first thing.</li>
+                <li>Using the wrong DOCTYPE for the document type — stick to the HTML5 DOCTYPE for new pages.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Quick checklist</h2>
+            <ol>
+                <li>Place &lt;!DOCTYPE html&gt; at the very top of the file.</li>
+                <li>Use &lt;html lang="...")&gt; for accessibility and proper language handling.</li>
+                <li>Validate with an HTML validator if you need strict compatibility.</li>
+            </ol>
+        </section>
+    </main>
+
+    <micro-include src="../root-footer.html"></micro-include>
+</body>
+
+</html>

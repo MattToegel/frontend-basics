@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Basics</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Basics</h1>
+            <p>CSS (Cascading Style Sheets) is used to style and layout web pages. This page introduces the foundational
+                concepts of CSS for beginners.</p>
+        </header>
+
+        <section>
+            <h2>What is CSS?</h2>
+            <p>CSS is a stylesheet language that describes how HTML elements are displayed on the screen, paper, or
+                other media. It allows you to control the layout, colors, fonts, and more.</p>
+        </section>
+
+        <section>
+            <h2>CSS Syntax</h2>
+            <p>CSS rules are made up of selectors and declarations. A declaration consists of a property and a value.
+            </p>
+            <pre><code>selector {
+  property: value;
+}</code></pre>
+            <p>Example:</p>
+            <pre><code>h1 {
+  color: blue;
+  font-size: 24px;
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>The Cascade</h2>
+            <p>CSS stands for Cascading Style Sheets, and the cascade determines which styles are applied when multiple
+                rules match the same element. The cascade considers:</p>
+            <ul>
+                <li>Importance (e.g., <code>!important</code> declarations).</li>
+                <li>Specificity (e.g., <code>#id</code> is more specific than <code>.class</code>).</li>
+                <li>Source order (later rules override earlier ones).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>How to Add CSS</h2>
+            <p>There are three ways to add CSS to a web page:</p>
+            <ul>
+                <li><strong>Inline:</strong> Add styles directly to an HTML element using the <code>style</code>
+                    attribute.</li>
+                <li><strong>Internal:</strong> Use a <code>&lt;style&gt;</code> block inside the
+                    <code>&lt;head&gt;</code> of the HTML document.
+                </li>
+                <li><strong>External:</strong> Link to an external CSS file using the <code>&lt;link&gt;</code> tag.
+                </li>
+            </ul>
+            <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>Box Model</h2>
+            <p>The CSS box model describes the rectangular boxes generated for elements in the document tree. It
+                consists of:</p>
+            <ul>
+                <li><strong>Content:</strong> The actual content of the element.</li>
+                <li><strong>Padding:</strong> Space between the content and the border.</li>
+                <li><strong>Border:</strong> A border surrounding the padding (if any).</li>
+                <li><strong>Margin:</strong> Space between the element and its neighbors.</li>
+            </ul>
+            <p>Example:</p>
+            <pre><code>div {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid black;
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Use external stylesheets for better maintainability.</li>
+                <li>Organize your CSS with comments and logical groupings.</li>
+                <li>Use shorthand properties (e.g., <code>margin: 10px 20px;</code>).</li>
+                <li>Test your styles across different browsers and devices.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

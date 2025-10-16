@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Colors</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Colors</h1>
+            <p>Colors are an essential part of web design, allowing you to style text, backgrounds, and other elements.
+                This page covers the basics of CSS colors, including different ways to declare colors, the difference
+                between text and background colors, and gradients.</p>
+        </header>
+
+        <section>
+            <h2>Color Declarations</h2>
+            <p>CSS provides several ways to declare colors:</p>
+            <ul>
+                <li><strong>Named Colors:</strong> Predefined color names like <code>red</code>, <code>blue</code>, and
+                    <code>green</code>.
+                </li>
+                <li><strong>Hexadecimal:</strong> A six-digit code representing red, green, and blue (e.g.,
+                    <code>#ff0000</code> for red).
+                </li>
+                <li><strong>RGB:</strong> Specifies red, green, and blue values (e.g., <code>rgb(255, 0, 0)</code>).
+                </li>
+                <li><strong>RGBA:</strong> Adds an alpha channel for transparency (e.g.,
+                    <code>rgba(255, 0, 0, 0.5)</code>).
+                </li>
+                <li><strong>HSL:</strong> Specifies hue, saturation, and lightness (e.g.,
+                    <code>hsl(0, 100%, 50%)</code>).
+                </li>
+                <li><strong>HSLA:</strong> Adds an alpha channel to HSL (e.g., <code>hsla(0, 100%, 50%, 0.5)</code>).
+                </li>
+            </ul>
+            <pre><code class="language-css">/* Examples */
+color: red; /* Named color */
+color: #ff0000; /* Hexadecimal */
+color: rgb(255, 0, 0); /* RGB */
+color: rgba(255, 0, 0, 0.5); /* RGBA */
+color: hsl(0, 100%, 50%); /* HSL */
+color: hsla(0, 100%, 50%, 0.5); /* HSLA */</code></pre>
+            <div style="display: flex; gap: 10px;">
+                <div style="width: 50px; height: 50px; background-color: red;" title="Named Color: red"></div>
+                <div style="width: 50px; height: 50px; background-color: #ff0000;" title="Hexadecimal: #ff0000"></div>
+                <div style="width: 50px; height: 50px; background-color: rgb(255, 0, 0);" title="RGB: rgb(255, 0, 0)">
+                </div>
+                <div style="width: 50px; height: 50px; background-color: rgba(255, 0, 0, 0.5);"
+                    title="RGBA: rgba(255, 0, 0, 0.5)"></div>
+                <div style="width: 50px; height: 50px; background-color: hsl(0, 100%, 50%);"
+                    title="HSL: hsl(0, 100%, 50%)"></div>
+                <div style="width: 50px; height: 50px; background-color: hsla(0, 100%, 50%, 0.5);"
+                    title="HSLA: hsla(0, 100%, 50%, 0.5)"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Text Color vs. Background Color</h2>
+            <p>Use the <code>color</code> property to set the text color and the <code>background-color</code> property
+                to set the background color of an element.</p>
+            <pre><code class="language-css">/* Examples */
+color: white; /* Text color */
+background-color: black; /* Background color */</code></pre>
+            <div style="color: white; background-color: black; padding: 10px;">This is white text on a black background.
+            </div>
+        </section>
+
+        <section>
+            <h2>Gradients</h2>
+            <p>CSS gradients allow you to create smooth transitions between two or more colors. There are two main
+                types:</p>
+            <ul>
+                <li><strong>Linear Gradients:</strong> Transition colors along a straight line.</li>
+                <li><strong>Radial Gradients:</strong> Transition colors outward from a central point.</li>
+            </ul>
+            <pre><code class="language-css">/* Linear Gradient */
+background: linear-gradient(to right, red, blue);
+
+/* Radial Gradient */
+background: radial-gradient(circle, red, blue);</code></pre>
+            <div
+                style="width: 200px; height: 100px; background: linear-gradient(to right, red, blue); margin-bottom: 10px;">
+                Linear Gradient</div>
+            <div style="width: 200px; height: 100px; background: radial-gradient(circle, red, blue);">Radial Gradient
+            </div>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Use named colors for simplicity when possible.</li>
+                <li>Use RGBA or HSLA for transparency effects.</li>
+                <li>Ensure sufficient contrast between text and background colors for accessibility.</li>
+                <li>Test your color choices on different devices and screens.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HTML Basics</title>
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+    <base href="/html/">
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>Core HTML tags</h1>
+            <p>Short, practical examples of the most common and important HTML tags for valid and accessible pages.</p>
+        </header>
+
+        <section>
+            <h2>Document skeleton</h2>
+            <p>Every page should start with the HTML5 doctype and a language on the root element. This ensures proper
+                rendering and accessibility.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Page title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- content --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Head & metadata</h2>
+            <p>The <code>&lt;head&gt;</code> element contains metadata about the document, such as its title, character
+                encoding, and links to external resources like stylesheets and scripts.</p>
+            <ul>
+                <li><code>&lt;meta charset="utf-8"&gt;</code>: Specifies the character encoding for the document.</li>
+                <li><code>&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</code>: Ensures the
+                    page is responsive on mobile devices.</li>
+                <li><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code>: Links to an external CSS file for
+                    styling.</li>
+                <li><code>&lt;script src="app.js"&gt;&lt;/script&gt;</code>: Includes an external JavaScript file.</li>
+            </ul>
+            <pre><code>&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Text & headings</h2>
+            <p>Use headings (<code>&lt;h1&gt;–&lt;h6&gt;</code>) and paragraphs for readable content. Headings provide
+                structure, while paragraphs group related text.</p>
+            <ul>
+                <li><code>&lt;h1&gt;</code>: Main heading, used once per page.</li>
+                <li><code>&lt;h2&gt;–&lt;h6&gt;</code>: Subheadings, used to organize content hierarchically.</li>
+                <li><code>&lt;p&gt;</code>: Defines a paragraph of text.</li>
+                <li><code>&lt;strong&gt;</code>: Indicates strong importance (bold).</li>
+                <li><code>&lt;em&gt;</code>: Indicates emphasis (italic).</li>
+            </ul>
+            <pre><code>&lt;h1&gt;Main heading&lt;/h1&gt;
+&lt;p&gt;A paragraph with &lt;strong&gt;strong&lt;/strong&gt; and &lt;em&gt;emphasis&lt;/em&gt;.&lt;/p&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Links, images & media</h2>
+            <p>Links and images are essential for navigation and visual content. Always include <code>alt</code>
+                attributes for images to improve accessibility.</p>
+            <ul>
+                <li><code>&lt;a&gt;</code>: Creates a hyperlink. Use <code>rel="noopener"</code> for security when
+                    opening links in a new tab.</li>
+                <li><code>&lt;img&gt;</code>: Embeds an image. The <code>alt</code> attribute provides alternative text
+                    for screen readers.</li>
+                <li><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>: Group images with captions for
+                    better context.</li>
+            </ul>
+            <pre><code>&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;External link&lt;/a&gt;
+&lt;img src="photo.jpg" alt="Person smiling"&gt;
+
+&lt;figure&gt;
+  &lt;img src="diagram.svg" alt="Flow diagram"&gt;
+  &lt;figcaption&gt;Diagram caption&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Lists, tables & code</h2>
+            <p>Lists and tables organize content, while <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> are used
+                for displaying code samples.</p>
+            <ul>
+                <li><code>&lt;ul&gt;</code>: Unordered list, for items without a specific order.</li>
+                <li><code>&lt;ol&gt;</code>: Ordered list, for sequential items.</li>
+                <li><code>&lt;table&gt;</code>: Displays tabular data. Use <code>&lt;thead&gt;</code>,
+                    <code>&lt;tbody&gt;</code>, and <code>&lt;th&gt;</code> for structure.
+                </li>
+                <li><code>&lt;pre&gt;</code>: Preserves whitespace and formatting for code.</li>
+                <li><code>&lt;code&gt;</code>: Inline code or code blocks.</li>
+            </ul>
+            <pre><code>&lt;ul&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Alex&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code&gt;console.log('Hello')&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Forms & inputs</h2>
+            <p>Forms collect user input. Use appropriate input types and labels for better validation and accessibility.
+            </p>
+            <ul>
+                <li><code>&lt;form&gt;</code>: Groups form elements.</li>
+                <li><code>&lt;label&gt;</code>: Associates a label with an input field.</li>
+                <li><code>&lt;input&gt;</code>: Collects user input. Use <code>type</code> attributes like
+                    <code>text</code>, <code>email</code>, or <code>password</code>.
+                </li>
+                <li><code>&lt;textarea&gt;</code>: Multi-line text input.</li>
+                <li><code>&lt;select&gt;</code>: Dropdown menu for selecting options.</li>
+                <li><code>&lt;button&gt;</code>: Submits the form or triggers actions.</li>
+            </ul>
+            <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input id="email" name="email" type="email" required&gt;
+
+  &lt;label for="message"&gt;Message&lt;/label&gt;
+  &lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;
+
+  &lt;label for="country"&gt;Country&lt;/label&gt;
+  &lt;select id="country" name="country"&gt;
+    &lt;option value="us"&gt;United States&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Semantic structure</h2>
+            <p>Semantic elements provide meaning to the content and improve accessibility. Use them to structure your
+                page logically.</p>
+            <ul>
+                <li><code>&lt;header&gt;</code>: Introductory content or navigation links.</li>
+                <li><code>&lt;nav&gt;</code>: Navigation links.</li>
+                <li><code>&lt;main&gt;</code>: Main content of the document.</li>
+                <li><code>&lt;article&gt;</code>: Self-contained content, like a blog post.</li>
+                <li><code>&lt;aside&gt;</code>: Related content, like a sidebar.</li>
+                <li><code>&lt;footer&gt;</code>: Footer content, like copyright or contact info.</li>
+            </ul>
+            <pre><code>&lt;header&gt;...&lt;/header&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;...&lt;/article&gt;
+  &lt;aside&gt;...&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Inline vs block-level & void elements</h2>
+            <p>HTML elements are categorized as inline, block-level, or void. Understanding these helps with layout and
+                structure.</p>
+            <ul>
+                <li>Inline: <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;span&gt;</code>. These do not
+                    start on a new line.</li>
+                <li>Block-level: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;section&gt;</code>. These
+                    start on a new line and take up the full width.</li>
+                <li>Void: <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>,
+                    <code>&lt;input&gt;</code>. These do not have closing tags.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Accessibility & best practices</h2>
+            <p>Follow these practices to ensure your HTML is accessible and user-friendly:</p>
+            <ul>
+                <li>Include <code>alt</code> attributes on images for screen readers.</li>
+                <li>Use <code>label</code> elements for form controls.</li>
+                <li>Set the <code>lang</code> attribute on the <code>&lt;html&gt;</code> element for language-specific
+                    content.</li>
+                <li>Validate your HTML with an online validator to catch errors.</li>
+                <li>Use semantic elements for better structure and meaning.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Quick checklist</h2>
+            <ol>
+                <li>Start with <code>&lt;!DOCTYPE html&gt;</code>.</li>
+                <li>Add <code>&lt;meta charset="utf-8"&gt;</code> and a <code>&lt;title&gt;</code>.</li>
+                <li>Use meaningful tags and attributes such as <code>alt</code>, <code>for</code>, and
+                    <code>href</code>.
+                </li>
+                <li>Keep markup valid and properly nested.</li>
+            </ol>
+        </section>
+    </main>
+
+    <micro-include src="../root-footer.html" allow-scripts></micro-include>
+
+</body>
+
+</html>

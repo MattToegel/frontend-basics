@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Position</title>
+    <base href="/css/">
+    <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <header>
+        <micro-include src="nav.html"></micro-include>
+    </header>
+
+    <main>
+        <header>
+            <h1>CSS Position</h1>
+            <p>The <code>position</code> property in CSS specifies how an element is positioned in the document. This
+                page covers the different position values, their definitions, and examples.</p>
+        </header>
+
+        <section>
+            <h2>Static</h2>
+            <p><strong>Default value:</strong> Elements are positioned according to the normal document flow.</p>
+            <pre><code class="language-css">.static {
+  position: static;
+}</code></pre>
+            <div style="position: static; background: lightblue; padding: 10px;">This is a static element.</div>
+        </section>
+
+        <section>
+            <h2>Relative</h2>
+            <p>Elements are positioned relative to their normal position. Use <code>top</code>, <code>right</code>,
+                <code>bottom</code>, and <code>left</code> to adjust their position.
+            </p>
+            <pre><code class="language-css">.relative {
+  position: relative;
+  top: 10px;
+  left: 20px;
+}</code></pre>
+            <div style="position: relative; top: 10px; left: 20px; background: lightgreen; padding: 10px;">This is a
+                relative element.</div>
+        </section>
+
+        <section>
+            <h2>Absolute</h2>
+            <p>Elements are positioned relative to the nearest positioned ancestor (not <code>static</code>). If no
+                ancestor is positioned, it is relative to the viewport.</p>
+            <pre><code class="language-css">.absolute {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}</code></pre>
+            <div style="position: relative; background: lightgray; padding: 10px;">
+                <div style="position: absolute; top: 10px; left: 20px; background: lightcoral; padding: 10px;">This is
+                    an absolute element.</div>
+                This is the positioned ancestor.
+            </div>
+        </section>
+
+        <section>
+            <h2>Fixed</h2>
+            <p>Elements are positioned relative to the viewport and do not move when scrolling.</p>
+            <pre><code class="language-css">.fixed {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}</code></pre>
+            <p><strong>Note:</strong> The fixed example appears in the top-right corner of the viewport and may overlay
+                other content — look at the top-right of your browser window.</p>
+            <div style="position: fixed; top: 10px; right: 10px; background: lightyellow; padding: 10px;">This is a
+                fixed element.</div>
+        </section>
+
+        <section>
+            <h2>Sticky</h2>
+            <p>Elements toggle between <code>relative</code> and <code>fixed</code> based on the scroll position. Use
+                <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code> to define the sticky
+                threshold.
+            </p>
+            <pre><code class="language-css">.sticky {
+  position: sticky;
+  top: 0;
+}</code></pre>
+            <div style="height: 200px; overflow-y: auto; background: #f9f9f9; padding: 10px; border: 1px solid #ddd;">
+                <div
+                    style="position: sticky; top: 0; background: lightpink; padding: 10px; border-bottom: 1px solid #ccc;">
+                    This is a sticky element.</div>
+                <p>Scroll down to see the sticky behavior.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed
+                    cursus ante dapibus diam.</p>
+                <p>Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus
+                    sed augue semper porta.</p>
+                <p>Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per
+                    conubia nostra.</p>
+                <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh.
+                </p>
+                <p>Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem.</p>
+                <p>Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus
+                    non, massa.</p>
+                <p>Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel,
+                    tincidunt sed, euismod in, nibh.</p>
+                <p>Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia
+                    nostra.</p>
+                <p>Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum
+                    ante quis turpis.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Important Considerations</h2>
+            <ul>
+                <li><strong>Stacking Context:</strong> Positioned elements can create new stacking contexts, affecting
+                    z-index.</li>
+                <li><strong>Viewport Units:</strong> Use <code>vh</code> and <code>vw</code> for fixed positioning
+                    relative to the viewport.</li>
+                <li><strong>Overflow:</strong> Ensure parent containers have appropriate overflow settings to avoid
+                    clipping.</li>
+                <li><strong>Sticky Support:</strong> Check browser compatibility for <code>position: sticky</code>.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <micro-include src="../root-footer.html" allow-scripts></micro-include>
+    </footer>
+</body>
+
+</html>
