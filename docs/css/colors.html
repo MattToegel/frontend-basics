@@ -7,6 +7,7 @@
     <title>CSS Colors</title>
 
     <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <script src="../demo-injector.js" defer></script>
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
@@ -93,6 +94,69 @@ background: radial-gradient(circle, red, blue);</code></pre>
                 style="width: 200px; height: 100px; background: linear-gradient(to right, red, blue); margin-bottom: 10px;">
                 Linear Gradient</div>
             <div style="width: 200px; height: 100px; background: radial-gradient(circle, red, blue);">Radial Gradient
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Demos</h2>
+            <p>Click into the left code areas to edit the CSS/HTML and see the live, scoped result on the right.</p>
+
+            <h3>Color Swatches</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-colors-swatches">&lt;style&gt;
+.example-swatches {
+  .swatch { width:50px; height:50px; display:inline-block; margin-right:6px; }
+  .label { font-size:12px; margin-top:6px; display:block; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-swatches"&gt;
+  &lt;div&gt;
+    &lt;div class="swatch" style="background:red;"&gt;&lt;/div&gt;
+    &lt;span class="label"&gt;named: red&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="swatch" style="background:#00bcd4;"&gt;&lt;/div&gt;
+    &lt;span class="label"&gt;hex: #00bcd4&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="swatch" style="background:rgba(255,0,0,0.4);"&gt;&lt;/div&gt;
+    &lt;span class="label"&gt;rgba&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-colors-swatches" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Gradients Playground</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-gradients-play">&lt;style&gt;
+.example-grad {
+  .box { width:200px; height:100px; margin-bottom:8px; }
+  .label { font-size:12px; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-grad"&gt;
+  &lt;div class="box" style="background:linear-gradient(to right, #ff7e5f, #feb47b);"&gt;&lt;/div&gt;
+  &lt;div class="label"&gt;linear-gradient(to right, #ff7e5f, #feb47b)&lt;/div&gt;
+  &lt;div class="box" style="background:radial-gradient(circle, #4facfe, #00f2fe);"&gt;&lt;/div&gt;
+  &lt;div class="label"&gt;radial-gradient(circle, #4facfe, #00f2fe)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-gradients-play" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
             </div>
         </section>
 

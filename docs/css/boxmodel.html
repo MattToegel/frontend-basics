@@ -7,6 +7,7 @@
     <title>CSS Box Model</title>
 
     <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <script src="../demo-injector.js" defer></script>
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
@@ -39,6 +40,77 @@
 }</code></pre>
             <div style="width: 200px; padding: 20px; border: 5px solid black; margin: 10px; background: lightblue;">
                 Content Area
+            </div>
+        </section>
+
+        <!-- Interactive demos inserted below -->
+        <section>
+            <h2>Interactive Demos</h2>
+            <p>Edit the left-side snippets (click into the code) to experiment. Styles are scoped per-demo, so they
+                won't
+                affect the rest of the page.</p>
+
+            <h3>Basic Box Model</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-box-basic">&lt;style&gt;
+.example-basic {
+  .box {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+    background: lightblue;
+  }
+}
+&lt;/style&gt;
+
+&lt;div class="example-basic"&gt;
+  &lt;div class="box"&gt;Content Area&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-box-basic" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Box-Sizing Comparison</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-box-sizing">&lt;style&gt;
+.example-boxsize {
+  .content {
+    width: 150px;
+    padding: 20px;
+    border: 5px solid black;
+    box-sizing: content-box;
+    background: lightyellow;
+    margin-bottom: 8px;
+  }
+  .border {
+    width: 150px;
+    padding: 20px;
+    border: 5px solid black;
+    box-sizing: border-box;
+    background: lightblue;
+  }
+}
+&lt;/style&gt;
+
+&lt;div class="example-boxsize"&gt;
+  &lt;div class="content"&gt;Content-Box&lt;/div&gt;
+  &lt;div class="border"&gt;Border-Box&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-box-sizing" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
             </div>
         </section>
 

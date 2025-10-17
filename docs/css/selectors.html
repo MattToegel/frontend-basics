@@ -7,6 +7,7 @@
     <title>CSS Selectors</title>
 
     <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <script src="../demo-injector.js" defer></script>
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
@@ -146,133 +147,123 @@ p::first-letter {
 
         <section>
             <h2>Interactive Demos</h2>
-            <p>See the selectors applied to live examples. The styles are scoped to each demo container so they won't
-                affect the rest of the page.</p>
+            <p>Each demo shows the source (HTML + CSS in a single snippet) on the left and a live, scoped result on the
+                right.
+                Edit the source (click into the code area) and the result will update. CSS is scoped per-demo so it
+                won't affect the rest of the page.</p>
 
+            <!-- Basic selectors demo -->
             <h3>Basic selectors (type, class, id)</h3>
-            <div class="demo basic-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
-                <style>
-                    .basic-demo p {
-                        color: blue;
-                    }
-
-                    .basic-demo .button {
-                        background-color: green;
-                        color: white;
-                        padding: 6px 10px;
-                        text-decoration: none;
-                        border-radius: 3px;
-                    }
-
-                    .basic-demo #example-header {
-                        font-size: 18px;
-                        font-weight: bold;
-                    }
-                </style>
-                <div id="example-header">Header (ID selector)</div>
-                <p>This paragraph is styled by the type selector inside the demo container.</p>
-                <a class="button" href="#">Button (class selector)</a>
-            </div>
-            <pre><code class="language-css">.basic-demo p { color: blue; }
-.basic-demo .button { background-color: green; color: white; }
-.basic-demo #example-header { font-size: 18px; font-weight: bold; }</code></pre>
-
-            <h3>Combinator selectors</h3>
-            <div class="demo combinator-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
-                <style>
-                    .combinator-demo div p {
-                        color: red;
-                    }
-
-                    .combinator-demo>p {
-                        font-weight: bold;
-                    }
-
-                    .combinator-demo h1+p {
-                        background: yellow;
-                    }
-
-                    .combinator-demo h1~p {
-                        color: gray;
-                    }
-                </style>
-                <h1>Heading</h1>
-                <p>Adjacent sibling (h1 + p) - should be bold and yellow</p>
-                <p>General sibling (h1 ~ p) - should be gray</p>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
                 <div>
-                    <p>Descendant inside div - should be red</p>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-basic-result">&lt;style&gt;
+.example-basic {
+  #title { font-size: 18px; }
+  p { color: blue; }
+  a.btn { background: green; color: white; padding:6px 10px; text-decoration:none; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-basic"&gt;
+  &lt;h2 id="title"&gt;Demo Title&lt;/h2&gt;
+  &lt;p&gt;A paragraph.&lt;/p&gt;
+  &lt;a class="btn" href="#"&gt;Click&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-basic-result" style="border:1px solid #ddd;padding:10px;"></div>
                 </div>
             </div>
-            <pre><code class="language-css">.combinator-demo div p { color: red; }
-.combinator-demo > p { font-weight: bold; }
-.combinator-demo h1 + p { background: yellow; }
-.combinator-demo h1 ~ p { color: gray; }</code></pre>
 
-            <h3>Pseudo-classes</h3>
-            <div class="demo pseudo-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
-                <style>
-                    .pseudo-demo a:hover {
-                        color: red;
-                        text-decoration: underline;
-                    }
+            <!-- Combinator selectors demo -->
+            <h3>Combinator selectors (descendant, child, adjacent, general sibling)</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-combinator-result">&lt;style&gt;
+.example-combinator {
+  .card p { color: red; }      /* descendant */
+  .card > p { font-weight: bold; } /* child */
+  h3 + p { margin-top:6px; background: yellow; }     /* adjacent sibling */
+  h3 ~ p { color: gray; }        /* general sibling */
+}
+&lt;/style&gt;
 
-                    .pseudo-demo ul li:nth-child(2) {
-                        color: orange;
-                    }
-                </style>
-                <a href="#">Hover over me (hover)</a>
-                <ul>
-                    <li>First</li>
-                    <li>Second (nth-child)</li>
-                    <li>Third</li>
-                </ul>
+&lt;div class="example-combinator"&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;Title&lt;/h3&gt;
+    &lt;p&gt;Intro paragraph&lt;/p&gt;
+    &lt;div&gt;
+      &lt;p&gt;Nested paragraph&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Another sibling paragraph&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-combinator-result" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
             </div>
-            <pre><code class="language-css">.pseudo-demo a:hover { color: red; }
-.pseudo-demo ul li:nth-child(2) { color: orange; }</code></pre>
 
-            <h3>First-child & not()</h3>
-            <div class="demo pfirst-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
-                <style>
-                    .pfirst-demo p:first-child {
-                        font-style: italic;
-                    }
+            <!-- Pseudo-classes demo -->
+            <h3>Pseudo-classes (hover, nth-child)</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-pseudo-result">&lt;style&gt;
+.example-pseudo {
+  a:hover { color: red; }
+  ul li:nth-child(2) { color: orange; }
+}
+&lt;/style&gt;
 
-                    .pfirst-demo p:not(.highlight) {
-                        color: black;
-                    }
-                </style>
-                <p>First child paragraph (italic)</p>
-                <p class="highlight">Highlighted paragraph (not selected by <code>:not(.highlight)</code>)</p>
-                <p>Normal paragraph (matched by <code>:not(.highlight)</code>)</p>
+&lt;div class="example-pseudo"&gt;
+  &lt;a href="#"&gt;Hover me&lt;/a&gt;
+  &lt;ul&gt;
+    &lt;li&gt;One&lt;/li&gt;
+    &lt;li&gt;Two&lt;/li&gt;
+    &lt;li&gt;Three&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result (interact)</strong>
+                    <div id="demo-pseudo-result" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
             </div>
-            <pre><code class="language-css">.pfirst-demo p:first-child { font-style: italic; }
-.pfirst-demo p:not(.highlight) { color: black; }</code></pre>
 
-            <h3>Pseudo-elements</h3>
-            <div class="demo pseudo-element-demo" style="border:1px dashed #ccc; padding:10px; margin-bottom:10px;">
-                <style>
-                    .pseudo-element-demo p::before {
-                        content: "Note: ";
-                        font-weight: bold;
-                    }
+            <!-- Pseudo-elements demo -->
+            <h3>Pseudo-elements (::before, ::after, ::first-letter)</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-pseudoel-result">&lt;style&gt;
+.example-pseudoel {
+  p::before { content: "Note: "; font-weight:bold; }
+  p::after { content: " [Read more]"; color: blue; }
+  p::first-letter { font-size: 1.5em; color: red; }
+}
+&lt;/style&gt;
 
-                    .pseudo-element-demo p::after {
-                        content: " [Read more]";
-                        color: blue;
-                    }
+&lt;div class="example-pseudoel"&gt;
+  &lt;p&gt;This is important content.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
 
-                    .pseudo-element-demo p::first-letter {
-                        font-size: 1.5em;
-                        color: red;
-                    }
-                </style>
-                <p>This paragraph demonstrates <code>::before</code>, <code>::after</code>, and
-                    <code>::first-letter</code>.
-                </p>
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-pseudoel-result" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
             </div>
-            <pre><code class="language-css">.pseudo-element-demo p::before { content: "Note: "; font-weight: bold; }
-.pseudo-element-demo p::after { content: " [Read more]"; color: blue; }
-.pseudo-element-demo p::first-letter { font-size: 1.5em; color: red; }</code></pre>
+
+            <!-- demo-injector.js handles demo wiring -->
+
         </section>
 
         <section>

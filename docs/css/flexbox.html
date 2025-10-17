@@ -7,6 +7,7 @@
     <title>CSS Flexbox</title>
 
     <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <script src="../demo-injector.js" defer></script>
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
@@ -22,6 +23,22 @@
                 a container, even when their sizes are dynamic. This page covers the key concepts and properties of
                 Flexbox with visual examples.</p>
         </header>
+
+        <section>
+            <h2>Why Flexbox?</h2>
+            <p>Flexbox is preferred for one-dimensional layouts because it makes alignment, spacing, and distribution
+                of space simple and predictable even when items have dynamic sizes. Key benefits:</p>
+            <ul>
+                <li>Easy centering along both axes with <code>justify-content</code> and <code>align-items</code>.</li>
+                <li>Flexible sizing using <code>flex</code> shorthand — items can grow or shrink to fill space.</li>
+                <li>Order independent of DOM using <code>order</code> for visual reordering.</li>
+                <li>Responsive-friendly: combined with media queries, flex containers adapt gracefully to different
+                    viewport sizes.</li>
+                <li>Simpler than floats/positioning for many common layout tasks (nav bars, form rows, toolbars).</li>
+            </ul>
+            <p>Common use cases: navigation bars, toolbars, equal-height columns, card rows that wrap, and small UI
+                components that need precise alignment.</p>
+        </section>
 
         <section>
             <h2>Flex Container Properties</h2>
@@ -69,6 +86,100 @@
                 <div style="flex-grow: 1; background-color: lightblue; padding: 10px;">Grow 1</div>
                 <div style="flex-grow: 2; background-color: lightblue; padding: 10px;">Grow 2</div>
                 <div style="flex-grow: 1; background-color: lightblue; padding: 10px;">Grow 1</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Demos</h2>
+            <p>Click into the left code blocks to edit the examples. Styles are scoped per-demo so they won't affect
+                the rest of the page.</p>
+
+            <h3>Alignment (justify-content & align-items)</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-flex-align">&lt;style&gt;
+.example-align {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: #f4f7fb;
+    padding: 10px;
+  }
+  .item { padding: 10px; background: lightblue; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-align"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="item"&gt;A&lt;/div&gt;
+    &lt;div class="item"&gt;B&lt;/div&gt;
+    &lt;div class="item"&gt;C&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-flex-align" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Flexible sizing (flex shorthand)</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-flex-grow">&lt;style&gt;
+.example-grow {
+  .row { display:flex; gap:8px; background:#fbfbfb; padding:8px; }
+  .a { flex: 1; padding:10px; background:lightgreen; }
+  .b { flex: 2; padding:10px; background:lightgreen; }
+  .c { flex: 0 0 80px; padding:10px; background:lightgreen; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-grow"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="a"&gt;flex:1&lt;/div&gt;
+    &lt;div class="b"&gt;flex:2&lt;/div&gt;
+    &lt;div class="c"&gt;80px&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-flex-grow" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Wrapping & responsive rows</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-flex-wrap">&lt;style&gt;
+.example-wrap {
+  .wrap { display:flex; flex-wrap:wrap; gap:8px; background:#fff; padding:8px; width:320px; }
+  .card { width:140px; padding:10px; background:lightcoral; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-wrap"&gt;
+  &lt;div class="wrap"&gt;
+    &lt;div class="card"&gt;Card 1&lt;/div&gt;
+    &lt;div class="card"&gt;Card 2&lt;/div&gt;
+    &lt;div class="card"&gt;Card 3&lt;/div&gt;
+    &lt;div class="card"&gt;Card 4&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-flex-wrap" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
             </div>
         </section>
 

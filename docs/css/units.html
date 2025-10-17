@@ -7,6 +7,7 @@
     <title>CSS Units</title>
 
     <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <script src="../demo-injector.js" defer></script>
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
@@ -142,6 +143,104 @@
 
             <p><strong>Browser support:</strong> Container queries are supported in modern browsers. For older browsers,
                 consider progressive enhancement or polyfills.</p>
+        </section>
+
+        <section>
+            <h2>Interactive Demos</h2>
+            <p>Edit the code on the left (click into the block) to experiment. Examples are scoped per-demo so they
+                won't affect the rest of the page.</p>
+
+            <h3>Fluid typography (clamp / min / max)</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-fluid-type">&lt;style&gt;
+.example-fluid {
+  .title {
+    /* fluid between 1rem and 2.5rem using viewport */
+    font-size: clamp(1rem, 4vw, 2.5rem);
+    margin-bottom: 8px;
+  }
+  .note { font-size: 0.9rem; color: #444; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-fluid"&gt;
+  &lt;div class="title"&gt;Fluid heading&lt;/div&gt;
+  &lt;div class="note"&gt;Resize the viewport to see the font size change&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-fluid-type" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Container queries (practical use)</h3>
+            <p>Below shows how a component adapts to its container width using <code>container-type</code> and
+                <code>@container</code>. Comment lines show the newer container-query units (e.g. <code>cqmin()</code>,
+                <code>cqmax()</code>) as examples — browsers may differ in support, so the demo uses @container rules
+                which are widely supported.
+            </p>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-container-queries">&lt;style&gt;
+.example-container {
+  .card { container-type: inline-size; border:1px solid #ddd; padding:10px; }
+  .title { font-size: 1rem; }
+  .meta { display: none; font-size: 0.9rem; color:#555; }
+
+  /* Example of hypothetical container-query unit usage (commented): */
+  /* .title { font-size: cqmin(1rem, 4cqw); } */
+
+  /* Working @container rule */
+  @container (min-width: 320px) {
+    .title { font-size: 1.2rem; }
+    .meta { display: block; }
+  }
+}
+&lt;/style&gt;
+
+&lt;div class="example-container"&gt;
+  &lt;div class="card" style="width:280px;"&gt;
+    &lt;div class="title"&gt;Narrow component&lt;/div&gt;
+    &lt;div class="meta"&gt;Meta shown when container ≥ 320px&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card" style="width:360px; margin-top:10px;"&gt;
+    &lt;div class="title"&gt;Wide component&lt;/div&gt;
+    &lt;div class="meta"&gt;Meta shown when container ≥ 320px&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-container-queries" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Viewport units & mobile gotchas</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-viewport-units">&lt;style&gt;
+.example-vw {
+  .box { width: 100vw; height: 40vh; background: linear-gradient(90deg, lightblue, lightpink); display:flex; align-items:center; justify-content:center; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-vw"&gt;
+  &lt;div class="box"&gt;100vw × 40vh box&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-viewport-units" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
         </section>
 
         <section>

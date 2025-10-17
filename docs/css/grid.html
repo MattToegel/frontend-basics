@@ -7,6 +7,7 @@
     <title>CSS Grid</title>
 
     <script src="https://matttoegel.github.io/micro-include/microinclude.min.js" defer></script>
+    <script src="../demo-injector.js" defer></script>
     <link rel="stylesheet" href="../styles.css" />
 </head>
 
@@ -176,6 +177,107 @@
                 <div style="background:lightcoral; padding:10px;">1fr</div>
                 <div style="background:lightcoral; padding:10px;">auto</div>
                 <div style="background:lightcoral; padding:10px;">minmax</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Interactive Demos</h2>
+            <p>Edit the left-side snippets (click into the code) to experiment. Examples are scoped per-demo.</p>
+
+            <h3>Grid basics</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-grid-basic">&lt;style&gt;
+.example-grid-basic {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .cell { padding:10px; background: lightblue; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-grid-basic"&gt;
+  &lt;div class="grid"&gt;
+    &lt;div class="cell"&gt;1&lt;/div&gt;
+    &lt;div class="cell"&gt;2&lt;/div&gt;
+    &lt;div class="cell"&gt;3&lt;/div&gt;
+    &lt;div class="cell"&gt;4&lt;/div&gt;
+    &lt;div class="cell"&gt;5&lt;/div&gt;
+    &lt;div class="cell"&gt;6&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-grid-basic" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Named areas</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-grid-areas">&lt;style&gt;
+.example-grid-areas {
+  .layout {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-areas:
+      "sidebar main"
+      "sidebar footer";
+    gap: 8px;
+  }
+  .sidebar { grid-area: sidebar; padding:8px; background: lightgreen; }
+  .main { grid-area: main; padding:8px; background: lightgreen; }
+  .footer { grid-area: footer; padding:8px; background: lightgreen; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-grid-areas"&gt;
+  &lt;div class="layout"&gt;
+    &lt;div class="sidebar"&gt;Sidebar&lt;/div&gt;
+    &lt;div class="main"&gt;Main&lt;/div&gt;
+    &lt;div class="footer"&gt;Footer&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-grid-areas" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
+            </div>
+
+            <h3>Auto-fit responsive</h3>
+            <div class="demo-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+                <div>
+                    <strong>Source (click to edit)</strong>
+                    <pre><code class="demo-source language-html" contenteditable="true" data-target="#demo-grid-autofit">&lt;style&gt;
+.example-grid-autofit {
+  .wrap { display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap:8px; }
+  .item { padding:10px; background: lightgoldenrodyellow; }
+}
+&lt;/style&gt;
+
+&lt;div class="example-grid-autofit"&gt;
+  &lt;div class="wrap"&gt;
+    &lt;div class="item"&gt;A&lt;/div&gt;
+    &lt;div class="item"&gt;B&lt;/div&gt;
+    &lt;div class="item"&gt;C&lt;/div&gt;
+    &lt;div class="item"&gt;D&lt;/div&gt;
+    &lt;div class="item"&gt;E&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div>
+                    <strong>Result</strong>
+                    <div id="demo-grid-autofit" style="border:1px solid #ddd;padding:10px;"></div>
+                </div>
             </div>
         </section>
 
