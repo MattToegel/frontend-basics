@@ -16,13 +16,39 @@
         /* URL fix for GitHub Pages to support both custom domain and non-custom domain deployments */
         document.querySelectorAll('a, img, script, link').forEach(el => {
             const attr = el.tagName === 'A' ? 'href' : 'src';
-            if (el[attr] && el[attr].startsWith('/') && !el[attr].startsWith('//')) {
-                const base = document.querySelector('base')?.href || window.location.origin;
-                const parts = window.location.pathname.split('/').filter(Boolean);
-                const repo = parts.length && !/\.[^/]+$/.test(parts[0]) ? parts[0] : '';
-                const adjustedBase = base.replace(/\/$/, '') + (repo ? `/${repo}` : '');
-                el[attr] = adjustedBase + el[attr];
+            // determine the real attribute (href for A/LINK, src otherwise)
+            const realAttr = (el.tagName.toLowerCase() === 'a' || el.tagName.toLowerCase() === 'link') ? 'href' : 'src';
+
+            // read the raw attribute value
+            const raw = el.getAttribute?.(realAttr);
+            if (!raw) return;
+
+            // skip anchors, data/blob/javascript/mailto/tel URIs
+            if (raw.startsWith('#') || raw.startsWith('data:') || raw.startsWith('blob:') ||
+                raw.startsWith('javascript:') || raw.startsWith('mailto:') || raw.startsWith('tel:')) return;
+
+            // detect GitHub Pages host and repo (first path segment)
+            const isGitHubPages = window.location.hostname.endsWith('github.io');
+            const repoSegment = isGitHubPages ? (window.location.pathname.split('/').filter(Boolean)[0] || '') : '';
+
+            let resolved;
+            try {
+                // resolve the URL against the current document so relative URLs become absolute
+                resolved = new URL(raw, window.location.href);
+            } catch (e) {
+                // malformed URL — leave it alone
+                return;
             }
+
+            // if we're on GitHub Pages and the resolved URL points to the same origin,
+            // ensure the repo segment is present as the first path segment
+            if (isGitHubPages && repoSegment && resolved.origin === window.location.origin) {
+                if (!resolved.pathname.startsWith(`/${repoSegment}`)) {
+                    // preserve leading slash semantics when concatenating
+                    resolved.pathname = `/${repoSegment}${resolved.pathname.startsWith('/') ? '' : '/'}${resolved.pathname}`;
+                }
+            }
+
         });
     </script>
 </footer>

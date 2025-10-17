@@ -1,4 +1,4 @@
-<nav>
+<nav class="top-nav">
     <ul>
         <li><a href="/">Home</a></li>
         <li>
@@ -11,3 +11,11 @@
         </li>
     </ul>
 </nav>
+<script>
+    try {
+        adjustGHP(".top a");
+    }
+    catch (e) {
+        console.warn("adjustGHP not found");
+    }
+</script>
